@@ -5,7 +5,7 @@ Local Settings for a heroku_ebooks account.
 '''
 
 # Configuration for Twitter API
-ENABLE_TWITTER_SOURCES = True # Fetch twitter statuses as source
+ENABLE_TWITTER_SOURCES = False # Fetch twitter statuses as source
 ENABLE_TWITTER_POSTING = True # Tweet resulting status?
 MY_CONSUMER_KEY = environ.get('TWITTER_CONSUMER_KEY')#Your Twitter API Consumer Key set in Heroku config
 MY_CONSUMER_SECRET = environ.get('TWITTER_CONSUMER_SECRET')#Your Consumer Secret Key set in Heroku config
@@ -23,9 +23,9 @@ USER_ACCESS_FILENAME = '' # The MASTODON user credential file you created at ins
 TWITTER_SOURCE_ACCOUNTS = ['stephenasmith', 'aoc']  # A list of comma-separated, quote-enclosed Twitter handles of account that you'll generate tweets based on. It should look like ["account1", "account2"]. If you want just one account, no comma needed.
 MASTODON_SOURCE_ACCOUNTS = [''] # A list, e.g. ["@user@instance.tld"]
 SOURCE_EXCLUDE = r'^$'  # Source tweets that match this regexp will not be added to the Markov chain. You might want to filter out inappropriate words for example.
-STATIC_TEST = False  # Set this to True if you want to test Markov generation from a static file instead of the API.
-TEST_SOURCE = '.txt'  # The name of a text file of a string-ified list for testing. To avoid unnecessarily hitting Twitter API. You can use the included testcorpus.txt, if needed.
-SCRAPE_URL = True  # Set this to true to scrape a webpage.
+STATIC_TEST = True  # Set this to True if you want to test Markov generation from a static file instead of the API.
+TEST_SOURCE = 'cars2.txt'  # The name of a text file of a string-ified list for testing. To avoid unnecessarily hitting Twitter API. You can use the included testcorpus.txt, if needed.
+SCRAPE_URL = False  # Set this to true to scrape a webpage.
 SRC_URL = ['https://en.wikipedia.org/wiki/Cars_(film)', 'https://en.wikipedia.org/wiki/Cars_2', 'https://en.wikipedia.org/wiki/Cars_3']  # A comma-separated list of URLs to scrape
 WEB_CONTEXT = ['div', 'div', 'div']  # A comma-separated list of the tag or object to search for in each page above.
 WEB_ATTRIBUTES = [{'mw-content-ltr'}, {'mw-content-ltr'}, {'mw-content-ltr'}] # A list of dictionaries containing the attributes for each page.
