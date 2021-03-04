@@ -18,7 +18,7 @@ except ImportError:
 from local_settings import *
 
 
-def connect(type='twitter'):
+def connect(type='twitter'): # connect to twitter API using keys from developer account
     if type == 'twitter':
         return twitter.Api(consumer_key=MY_CONSUMER_KEY,
                        consumer_secret=MY_CONSUMER_SECRET,
@@ -142,7 +142,7 @@ if __name__ == "__main__":
         print(str(guess) + " No, sorry, not this time.")  # message if the random number fails.
         sys.exit()
     else:
-        api = connect()         
+        api = connect()
         if ENABLE_MASTODON_SOURCES or ENABLE_MASTODON_POSTING:
             mastoapi = connect(type='mastodon')
         source_statuses = []
