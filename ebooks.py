@@ -151,7 +151,7 @@ if __name__ == "__main__":
             print(">>> Generating from {0}".format(file))
             string_list = open(file).readlines()
             for item in string_list:
-                source_statuses += item.split(",")
+                source_statuses += item.split(".")
         if SCRAPE_URL:
             source_statuses += scrape_page(SRC_URL, WEB_CONTEXT, WEB_ATTRIBUTES)
         if ENABLE_TWITTER_SOURCES and TWITTER_SOURCE_ACCOUNTS and len(TWITTER_SOURCE_ACCOUNTS[0]) > 0:

@@ -31,7 +31,7 @@ WEB_CONTEXT = ['div', 'div', 'div']  # A comma-separated list of the tag or obje
 WEB_ATTRIBUTES = [{'mw-content-ltr'}, {'mw-content-ltr'}, {'mw-content-ltr'}] # A list of dictionaries containing the attributes for each page.
 
 ODDS = 4  # How often do you want this to run? 1/8 times?
-ORDER = 3  # How closely do you want this to hew to sensical? 2 is low and 4 is high.
+ORDER = 2  # How closely do you want this to hew to sensical? 2 is low and 4 is high.
 
 DEBUG = False  # Set this to False to start Tweeting live
 TWEET_ACCOUNT = 'benmountain8'  # The name of the account you're tweeting to.
