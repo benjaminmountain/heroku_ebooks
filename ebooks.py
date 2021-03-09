@@ -227,12 +227,12 @@ if __name__ == "__main__":
 
         # throw out tweets that match anything from the source account.
         if ebook_status is not None and len(ebook_status) < 210:
-            for status in source_statuses:
-                if ebook_status[:-1] not in status:
-                    continue
-                else:
-                    print("TOO SIMILAR: " + ebook_status)
-                    sys.exit()
+            # for status in source_statuses:
+            #     if ebook_status[:-1] not in status:
+            #         continue
+            #     else:
+            #         print("TOO SIMILAR: " + ebook_status)
+            #         sys.exit()
 
             if not DEBUG:
                 if ENABLE_TWITTER_POSTING:
