@@ -54,3 +54,4 @@ tweet = generate_script(corpus)
 
 status = api.PostUpdate(tweet)
 print(tweet)
+print("test")
