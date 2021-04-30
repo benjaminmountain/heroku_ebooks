@@ -4,6 +4,7 @@ import random
 from local_settings import (MY_CONSUMER_KEY, MY_CONSUMER_SECRET, MY_ACCESS_TOKEN_KEY, MY_ACCESS_TOKEN_SECRET, DEBUG, ODDS)
 
 # Adapted from https://towardsdatascience.com/simulating-text-with-markov-chains-in-python-1a27e6d13fc6
+# And of course from heroku_ebooks page this project was forked from
 
 def connect(type='twitter'): # connect to twitter API using keys from developer account
     if type == 'twitter':
