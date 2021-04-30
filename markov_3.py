@@ -47,12 +47,12 @@ def generate_script(carpus):
     for i in range(n_words):
         chain.append(np.random.choice(word_dict[chain[-1]]))
 
-        return ' '.join(chain)
+    return ' '.join(chain)
 
 
 tweet = generate_script(corpus)
 
-if !DEBUG:
+if not DEBUG:
     api = connect()
     status = api.PostUpdate(tweet)
 
