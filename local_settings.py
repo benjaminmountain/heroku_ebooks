@@ -30,7 +30,7 @@ SRC_URL = ['https://en.wikipedia.org/wiki/Cars_(film)', 'https://en.wikipedia.or
 WEB_CONTEXT = ['div', 'div', 'div']  # A comma-separated list of the tag or object to search for in each page above.
 WEB_ATTRIBUTES = [{'mw-content-ltr'}, {'mw-content-ltr'}, {'mw-content-ltr'}] # A list of dictionaries containing the attributes for each page.
 
-ODDS = 4  # How often do you want this to run? 1/8 times?
+ODDS = 6 # How often do you want this to run? 1/8 times?
 ORDER = 2  # How closely do you want this to hew to sensical? 2 is low and 4 is high.
 
 DEBUG = True  # Set this to False to start Tweeting live

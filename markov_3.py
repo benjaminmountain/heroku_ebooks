@@ -1,7 +1,7 @@
 import numpy as np
 import twitter
 import random
-from local_settings import (MY_CONSUMER_KEY, MY_CONSUMER_SECRET, MY_ACCESS_TOKEN_KEY, MY_ACCESS_TOKEN_SECRET, DEBUG)
+from local_settings import (MY_CONSUMER_KEY, MY_CONSUMER_SECRET, MY_ACCESS_TOKEN_KEY, MY_ACCESS_TOKEN_SECRET, DEBUG, ODDS)
 
 # Adapted from https://towardsdatascience.com/simulating-text-with-markov-chains-in-python-1a27e6d13fc6
 
@@ -52,8 +52,11 @@ def generate_script(carpus):
 
 
 tweet = generate_script(corpus)
+roll = 0
+if ODDS and not DEBUG:
+    roll = random.randint(0, ODDS - 1)
 
-if not DEBUG and len(tweet) < 210:
+if not DEBUG and len(tweet) < 210 and not roll:
     api = connect()
     status = api.PostUpdate(tweet)
 
