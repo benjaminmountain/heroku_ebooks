@@ -1,6 +1,7 @@
 import numpy as np
 # Adapted from https://towardsdatascience.com/simulating-text-with-markov-chains-in-python-1a27e6d13fc6
 # not working yet
+
 cars2 = open('cars2.txt', encoding='utf8').read()
 
 corpus = cars2.split()
@@ -26,9 +27,9 @@ while first_word.islower():
 
 chain = [first_word]
 
-n_words = 50
+n_words = 15
 
 for i in range(n_words):
     chain.append(np.random.choice(word_dict[chain[-1]]))
 
-' '.join(chain)
+print(' '.join(chain))
