@@ -44,7 +44,7 @@ def generate_script(carpus):
 
     chain = [first_word]
 
-    n_words = random.randint(5, 31)
+    n_words = random.randint(2, 6)
 
     for i in range(n_words):
         chain.append(np.random.choice(word_dict[chain[-1]]))
