@@ -2,6 +2,7 @@ import numpy as np
 import twitter
 import random
 import re
+import string
 from local_settings import (MY_CONSUMER_KEY, MY_CONSUMER_SECRET, MY_ACCESS_TOKEN_KEY, MY_ACCESS_TOKEN_SECRET, DEBUG, ODDS)
 
 # Adapted from https://towardsdatascience.com/simulating-text-with-markov-chains-in-python-1a27e6d13fc6
@@ -43,16 +44,13 @@ def generate_script(corpus):
     # Select new first word until it is capitalized and doesn't contain numbers
     while first_word.islower() or hasNumber(first_word):
         first_word = np.random.choice(corpus)
-
     chain = [first_word]
 
     n_words = random.randint(2, 6)
-
     for i in range(n_words):
         chain.append(np.random.choice(word_dict[chain[-1]]))
 
     return ' '.join(chain)
-
 
 tweet = generate_script(corpus)
 roll = 0
@@ -61,6 +59,14 @@ if ODDS and not DEBUG:
 
 # Drop last word
 tweet = re.sub(r'\s\w+.$', '', tweet)
+
+# Remove all characters after punctuation (issue if word has apostrophe)
+for i in tweet:
+    if i in string.punctuation:
+        head, sep, tail = tweet.partition(i)
+        tweet = head + sep
+        print("{} removed from tweet".format(tail))
+        break
 
 
 if not DEBUG and len(tweet) < 210 and not roll:
