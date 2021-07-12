@@ -61,6 +61,10 @@ if ODDS and not DEBUG:
 tweet = re.sub(r'\s\w+.$', '', tweet)
 
 # Remove all characters after punctuation (issue if word has apostrophe)
+#
+# Attributions
+# https://www.geeksforgeeks.org/string-punctuation-in-python/
+# https://stackoverflow.com/questions/904746/how-to-remove-all-characters-after-a-specific-character-in-python
 for i in tweet:
     if i in string.punctuation:
         head, sep, tail = tweet.partition(i)
