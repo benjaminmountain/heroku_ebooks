@@ -1,10 +1,14 @@
 import numpy as np
 import twitter
 import random
+import re
 from local_settings import (MY_CONSUMER_KEY, MY_CONSUMER_SECRET, MY_ACCESS_TOKEN_KEY, MY_ACCESS_TOKEN_SECRET, DEBUG, ODDS)
 
 # Adapted from https://towardsdatascience.com/simulating-text-with-markov-chains-in-python-1a27e6d13fc6
 # And of course from heroku_ebooks page this project was forked from
+
+def hasNumber(inputString):
+    return bool(re.search(r'\d', inputString))
 
 def connect(type='twitter'): # connect to twitter API using keys from developer account
     if type == 'twitter':
@@ -24,10 +28,8 @@ def make_pairs(corpus):
     for i in range(len(corpus)-1):
         yield (corpus[i], corpus[i+1])
 
-def generate_script(carpus):
-
+def generate_script(corpus):
     pairs = make_pairs(corpus)
-
     word_dict = {}
 
     for word_1, word_2 in pairs:
@@ -38,8 +40,8 @@ def generate_script(carpus):
 
     first_word = np.random.choice(corpus)
 
-    # Select new first work until it is capitalized
-    while first_word.islower():
+    # Select new first word until it is capitalized and doesn't contain numbers
+    while first_word.islower() or hasNumber(first_word):
         first_word = np.random.choice(corpus)
 
     chain = [first_word]
@@ -56,6 +58,10 @@ tweet = generate_script(corpus)
 roll = 0
 if ODDS and not DEBUG:
     roll = random.randint(0, ODDS - 1)
+
+# Drop last word
+tweet = re.sub(r'\s\w+.$', '', tweet)
+
 
 if not DEBUG and len(tweet) < 210 and not roll:
     api = connect()
