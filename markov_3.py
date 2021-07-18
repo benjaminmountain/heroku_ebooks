@@ -65,12 +65,27 @@ tweet = re.sub(r'\s\w+.$', '', tweet)
 # Attributions
 # https://www.geeksforgeeks.org/string-punctuation-in-python/
 # https://stackoverflow.com/questions/904746/how-to-remove-all-characters-after-a-specific-character-in-python
+# for i in tweet:
+#     if i in string.punctuation:
+#         head, sep, tail = tweet.partition(i)
+#         tweet = head + sep
+#         print("{} removed from tweet".format(tail))
+#         break
+
 for i in tweet:
-    if i in string.punctuation:
+    if i == ",":
+        head, sep, tail = tweet.partition(i)
+        tweet = head
+        print("{} removed from tweet".format(tail))
+        break
+    if i == "'" or i == "(" or i == ")" or i == "-":
+        break
+    elif i in string.punctuation:
         head, sep, tail = tweet.partition(i)
         tweet = head + sep
         print("{} removed from tweet".format(tail))
         break
+
 
 
 if not DEBUG and len(tweet) < 210 and not roll:
